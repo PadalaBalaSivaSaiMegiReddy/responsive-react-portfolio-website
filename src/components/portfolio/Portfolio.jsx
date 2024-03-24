@@ -1,7 +1,7 @@
 import "./Portfolio.scss";
 
 function Portfolio() {
-  return <div className="portfolio">Portfolio</div>;
+  return <div  id="portfolio" className="portfolio">Portfolio</div>;
 }
 
 export default Portfolio;
