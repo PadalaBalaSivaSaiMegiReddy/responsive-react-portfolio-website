@@ -1,9 +1,7 @@
-import './Topbar.scss'
+import "./Topbar.scss";
 
 function Topbar() {
-  return (
-    <div>Topbar</div>
-  )
+  return <div className="topbar">Topbar</div>;
 }
 
-export default Topbar
+export default Topbar;

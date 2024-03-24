@@ -1,16 +1,14 @@
-
-import './App.css'
-import Contact from './components/contact/Contact'
+import "./App.css";
+import Topbar from "./components/topbar/Topbar";
 
 function App() {
-
   return (
     <>
-    <div className='app'>App
-    <Contact/>
-    </div>
+      <div className="app">
+        <Topbar />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
