@@ -1,59 +1,87 @@
+import { useEffect, useState } from "react";
+import PortfolioList from "../portfolioList/PortfolioList";
 import "./Portfolio.scss";
 
+import {
+  featuredPortfolio,
+  webPortfolio,
+  mobilePortfolio,
+  designPortfolio,
+  contentPortfolio,
+} from "../../data";
+
 function Portfolio() {
+  const [selected, setSelected] = useState("featured");
+  const [data, setData] = useState([]);
+  const list = [
+    {
+      id: "featured",
+      title: "Featured",
+    },
+    {
+      id: "web",
+      title: "Web App",
+    },
+    {
+      id: "mobile",
+      title: "Mobile App",
+    },
+    {
+      id: "design",
+      title: "Design",
+    },
+    {
+      id: "content",
+      title: "Content",
+    },
+  ];
+
+  useEffect(() => {
+    switch (selected) {
+      case "feature":
+        setData(featuredPortfolio);
+        break;
+      case "web":
+        setData(webPortfolio);
+        break;
+      case "mobile":
+        setData(mobilePortfolio);
+        break;
+      case "design":
+        setData(designPortfolio);
+        break;
+      case "content":
+        setData(contentPortfolio);
+        break;
+
+      default:
+        setData(featuredPortfolio);
+    }
+  }, [selected]);
+
   return (
     <div id="portfolio" className="portfolio">
       <h1>Portfolio</h1>
       <ul>
-        <li className="active">Featured</li>
-        <li>Web App</li>
-        <li>Mobile App</li>
-        <li>Design</li>
-        <li>Branding</li>
+        {list.map((item) => (
+          <PortfolioList
+            active={selected === item.id}
+            setSelected={setSelected}
+            key={item.id}
+            title={item.title}
+            id={item.id}
+          />
+        ))}
       </ul>
       <div className="container">
-        <div className="item">
-          <img
-            src="https://media.istockphoto.com/id/147732062/photo/a-up-close-view-of-the-white-pillared-entrance-of-a-bank.jpg?s=1024x1024&w=is&k=20&c=WzKL6hdOBhN76aV_s8zrCnhcnYyvvkcUdm2g_LQhzbw="
-            alt=""
-          />
-          <h3>Banking App</h3>
+          {data.map((d) => (
+        <div key={d.id} className="item">
+            <div >
+              <img src={d.img} alt="" />
+              <h3>{d.title}</h3>
+            </div>
         </div>
-        <div className="item">
-          <img
-            src="https://media.istockphoto.com/id/147732062/photo/a-up-close-view-of-the-white-pillared-entrance-of-a-bank.jpg?s=1024x1024&w=is&k=20&c=WzKL6hdOBhN76aV_s8zrCnhcnYyvvkcUdm2g_LQhzbw="
-            alt=""
-          />
-          <h3>Banking App</h3>
-        </div>
-        <div className="item">
-          <img
-            src="https://media.istockphoto.com/id/147732062/photo/a-up-close-view-of-the-white-pillared-entrance-of-a-bank.jpg?s=1024x1024&w=is&k=20&c=WzKL6hdOBhN76aV_s8zrCnhcnYyvvkcUdm2g_LQhzbw="
-            alt=""
-          />
-          <h3>Banking App</h3>
-        </div>
-        <div className="item">
-          <img
-            src="https://media.istockphoto.com/id/147732062/photo/a-up-close-view-of-the-white-pillared-entrance-of-a-bank.jpg?s=1024x1024&w=is&k=20&c=WzKL6hdOBhN76aV_s8zrCnhcnYyvvkcUdm2g_LQhzbw="
-            alt=""
-          />
-          <h3>Banking App</h3>
-        </div>
-        <div className="item">
-          <img
-            src="https://media.istockphoto.com/id/147732062/photo/a-up-close-view-of-the-white-pillared-entrance-of-a-bank.jpg?s=1024x1024&w=is&k=20&c=WzKL6hdOBhN76aV_s8zrCnhcnYyvvkcUdm2g_LQhzbw="
-            alt=""
-          />
-          <h3>Banking App</h3>
-        </div>
-        <div className="item">
-          <img
-            src="https://media.istockphoto.com/id/147732062/photo/a-up-close-view-of-the-white-pillared-entrance-of-a-bank.jpg?s=1024x1024&w=is&k=20&c=WzKL6hdOBhN76aV_s8zrCnhcnYyvvkcUdm2g_LQhzbw="
-            alt=""
-          />
-          <h3>Banking App</h3>
-        </div>
+          ))}
       </div>
     </div>
   );
