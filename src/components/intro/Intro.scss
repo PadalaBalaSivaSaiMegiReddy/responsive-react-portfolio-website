@@ -14,12 +14,13 @@
       align-items: flex-end;
       justify-content: center;
       float: right;
+      position: relative;
 
       img {
         height: 90%;
         object-fit: contain;
         width: 700px;
-        position: relative;
+        position: absolute;
         bottom: 190px;
         left: -30px;
       }
