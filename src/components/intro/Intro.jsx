@@ -30,7 +30,7 @@ function Intro() {
       500,
     ]}
     speed={50}
-    style={{ fontSize: '30px',display:"inline",fontWeight:"bold",color:"crimson" }}
+    style={{ fontSize: '30px',fontWeight:"bold",color:"crimson" }}
     repeat={Infinity}
   />
 </div>

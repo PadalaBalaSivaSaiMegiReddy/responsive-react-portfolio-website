@@ -1,24 +1,63 @@
 import "./Testimonials.scss";
 
 function Testimonials() {
+  const data = [
+    {
+      id: 1,
+      name: "Tom Durden",
+      title: "Senior Developer",
+      img: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      icon: "../../src/assets/twitter.png",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat magnam dolorem.",
+    },
+    {
+      id: 2,
+      name: "Alex Kalinski",
+      title: "Co-Founder of DELKA",
+      img: "https://images.pexels.com/photos/428321/pexels-photo-428321.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      icon: "../../src/assets/youtube.png",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat magnam dolorem recusandae perspiciatis ducimus vel hic temporibus. ",
+      featured: true,
+    },
+    {
+      id: 3,
+      name: "Martin Harold",
+      title: "CEO of ALBI",
+      img: "https://images.pexels.com/photos/3863793/pexels-photo-3863793.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      icon: "../../src/assets/linkedin.png",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat magnam dolorem",
+    },
+  ];
+
   return (
     <div id="testimonials" className="testimonials">
       <h1>Testimonials</h1>
       <div className="container">
-        <div className="card">
+        {data.map(d=>(
+
+          <div className={d.featured?"featured card":"card"} key={d.id}>
           <div className="top">
-            <img src="../../src/assets/right-arrow.png" className="left" alt="" />
-            <img className="user" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKvdHn8GmPGCO0y3SJqNHACygpm0h9VycMHg&usqp=CAU" alt="" />
-            <img className="right" src="../../src/assets/youtube.png" alt="" />
+            <img
+              src="../../src/assets/right-arrow.png"
+              className="left"
+              alt=""
+            />
+            <img
+              className="user"
+              src={d.img}
+              alt=""
+              />
+            <img className="right" src={d.icon} alt="" />
           </div>
           <div className="center">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia et recusandae voluptatem consequatur, commodi iure voluptate amet corporis possimus libero.
+            {d.desc}
           </div>
           <div className="bottom">
-            <h3>Alex</h3>
-            <h4>CEO of LinkedIn</h4>
+            <h3>{d.name}</h3>
+            <h4>{d.title}</h4>
           </div>
         </div>
+              ))}
       </div>
     </div>
   );
